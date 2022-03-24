@@ -1,59 +1,106 @@
 <template>
-    <p>getCartLength: {{getCartLength}}</p>
-    <button type="button" @click="addPrd({id: 3, name: 'new-' + new Date(), category: 'C'})">addProduct</button>
-    <hr>
-    <table border="1">
-      <thead>
-        <tr>
-          <th>id</th>
-          <th>name</th>
-          <th>category</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr :key="i" v-for="(product, i) in cart">
-          <td>{{product.id}}</td>
-          <td>{{product.name}}</td>
-          <td>{{product.category}}</td>
-        </tr>
-      </tbody>
+    유저 이름: <input
+      v-model="userName"
+      type="text"
+    >
+    <button @click="searchName">
+      검색
+    </button>
 
-    </table>
+    <div
+      v-for="(item, idx) in computedList"
+      :key="idx"
+    >
+      제목: {{ item.title }} 
+      저자: {{ item.author }}
+    </div>
 </template>
 
 <script>
-  import { mapGetters, mapMutations } from 'vuex';
+// vuex 라이브러리에서 mapActions, mapGetters 함수를 가져옵니다.
+import { mapActions, mapGetters } from 'vuex'
 
-  export default {
-      components: {  //다른 컴포넌트 사용 시 컴포넌트를 import하고, 배열로 저장
-      },
-      // computed: {
-      //   count() {
-      //     return this.$store.state.count;
-      //   },
-      //   cartCount() {
-      //     return this.$store.getters.cartCount;
-      //   }
-      // },
-      // computed: mapGetters({
-      //   count: 'count',
-      //   cartCount: 'cartCount'
-      // }),
-      computed: {
-        // store.js의 getters 속성 이름과 Component 속성 이름을 동일하게 사용할 때 [] 사용
-        ...mapGetters( ['cart', 'getCartLength'] ),
-        // store.js의 getters 속성 이름과 Component 속성 이름을 다르게 사용할 때 {} 사용
-        // ...mapGetters( { getCartLng:'getCartLength'} ),
-      },
-      methods: {
-        // sotre.js의 mutations 메서드 명과 StoreAccess.vue 메서드 명이 동일할 때 [] 사용
-        // ...mapMutations(['increment']),
-        // sotre.js의 mutations 메서드 명과 StoreAccess.vue 메서드 명을 다르게 매칭할 떄 {} 사용
-        ...mapMutations({ addPrd:'addProduct' }),
-        // increment() {
-        //   // this.$store.commit('increment');
-        //   this.$store.commit('addProduct', {id: 3, name: "new-" + new Date(), category: "C"});
-        // }
-      } 
+/*
+  namespaced: true를 사용했기 때문에 선언해줍니다.
+  index.js 에서 modules 객체의 '키' 이름입니다.
+
+  modules: {
+    키: 값
+    userStore: userStore,
+    postStore: postStore
+  }  
+*/
+const userStore = 'userStore'
+const postStore = 'postStore'
+
+export default {
+  data() {
+    return {
+      userName: ''
+    }
+  },
+  computed: {
+    /*
+      mapGetter는 store의 getters를 가져옵니다.
+
+      네임스페이스를 사용하기 때문에 키 이름을 적어줍니다. (userStore, postStore)
+
+      2가지 방식으로 가져올 수 있습니다.
+      1) 이름 지정해서 가져오기
+      2) getters 이름 그대로 사용해서 가져오기
+    */
+    // 1) 이름 지정해서 가져오기
+    ...mapGetters(userStore, [
+      'GE_USER_NAME'
+    ]),
+
+    // 2) getters 이름 그대로 사용해서 가져오기
+    ...mapGetters(postStore, [
+      'GE_POST_LIST'
+    ]),    
+
+    // 스토어의 리스트 중에서 검색한 유저이름의 포스트 목록만 반환합니다.
+    computedList() {
+      let list = []
+
+      for(let item of this.GE_POST_LIST) {
+        if(item.author == this.GE_USER_NAME) {
+          list.push(item)
+        }
+      }
+
+      return list
+    }
+  },
+  created() {
+    this.userName = this.GE_USER_NAME
+  },
+  methods: {
+    /*
+      mapGetter는 store의 getters를 가져옵니다.
+
+      네임스페이스를 사용하기 때문에 키 이름을 적어줍니다. (userStore, postStore)
+
+      2가지 방식으로 가져올 수 있습니다.
+      1) 이름 지정해서 가져오기
+      2) getters 이름 그대로 사용해서 가져오기      
+
+      개인의 취향이지만, getters 이름 그대로 사용하는 것을 추천드립니다.
+
+      다른 메소드 이름으로 매핑 예를 들면, setUserName: AC_USER_NAME 하면,
+      setUserName 함수가 나중에는 스토어 함수인지, 현재 파일의 함수인지 헷갈리는 경우가 있습니다.
+    */
+    ...mapActions(userStore, [
+      'AC_USER_NAME'
+    ]),
+    // 버튼을 클릭하면 수행됩니다.
+    searchName() {
+      const payload = {
+        userName: this.userName
+      }
+      // store의 userName을 변경합니다.
+      this.AC_USER_NAME(payload)
+    }
   }
+}
 </script>
