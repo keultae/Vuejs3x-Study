@@ -17,17 +17,17 @@ const postStore = {
       ]
   },
   getters: {
-      GE_POST_LIST: state => state.postList
+    GE_POST_LIST: state => state.postList
   },
   mutations: {
-      MU_POST_LIST: (state, payload) => {
-          state.postList = payload
+    MU_POST_LIST: (state, payload) => {
+        state.postList = payload
       }
   },
   actions: {
-      AC_USER_NAME: ({ commit }, payload) => {
-          commit('MU_POST_LIST', payload)
-      }
+    AC_POST_LIST: ({ commit }, payload) => {
+        commit('MU_POST_LIST', payload)
+    }
   }
 }
 

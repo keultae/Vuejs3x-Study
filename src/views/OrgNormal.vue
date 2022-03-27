@@ -3,65 +3,55 @@
      <h1>조직도</h1>
       <hr>
       <div style="display: flex">
-        <vue3-tree-vue :items="orgs"
-          :isCheckable="false"
-          :hideGuideLines="false"
-          v-model:selectedItem="selectedItem"
-          :expandAll="true"
-          style="width: 200px; display: block; border-right: 1px solid gray">
-          <template v-slot:item-prepend-icon="treeViewItem" >
-              <img src="@/assets/folder.svg" alt="folder" 
-                  v-if="treeViewItem.type === 'group'"
-                  height="20" width="20">
-              <img src="@/assets/folder.svg"
-                  v-if="treeViewItem.type === 'bonbu'"
-                  height="20" width="20">
-              <img src="@/assets/folder.svg"
-                  v-if="treeViewItem.type === 'team'"
-                  height="20" width="20">
-          </template>
-          <!-- <template v-slot:item-prepend>
-            <div style="background: blue; height: 18px; width: 18px; margin-right: 0.2em" ></div>
-          </template> -->
-        </vue3-tree-vue>
+        <org-normal-tree :orgs="orgs" @custom-event="setSelectedItem" />
 
-        <div style="max-width: 600px">
-          <div style="margin: 0.4em">
-           selectedItem id:{{ selectedItem?.id }}, type:{{ selectedItem?.type }}
-          </div>
-          <div style="margin: 0.4em">
-            <table border="1">
-              <thead>
-                <tr>
-                  <th>no</th>
-                  <th>org_id</th>
-                  <th>name</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr :key="i" v-for="(member, i) in selectedMember">
-                    <td>{{i+1}}</td>
-                    <td>{{member.org_id}}</td>
-                    <td>{{member.name}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <org-normal-table :selectedItem="selectedItem" :selectedMembers="selectedMembers" />
       </div>
    </div>
 </template>
 
 <script>
-import Vue3TreeVue from 'vue3-tree-vue';
-import 'vue3-tree-vue/dist/style.css'
+import OrgNormalTable from './OrgNormalTable.vue'
+import OrgNormalTree from './OrgNormalTree.vue'
 
-export default {  
-  components: { Vue3TreeVue },
+export default {
+  components: { OrgNormalTable, OrgNormalTree },  
   data() {
-    return {
-      selectedItem: {"id":"NLP-AIBUSIN", "type":"bonbu"},
-      orgs: [
+    return {      
+      selectedItem: {id: "NLP-AIBUSIN-AI8"},
+      orgs: [],
+      members: []
+    }
+  },
+  computed: {
+    selectedMembers() {
+        let list = []
+
+        if(this.selectedItem != null) {
+          for(let item of this.members) {
+              if( item.org_id.startsWith(this.selectedItem?.id) ) {
+              list.push(item)
+              }
+          }
+        }
+
+        return list
+    }
+  },
+  watch: {
+    selectedItem() {
+      console.log("OrgNormal > watch: selectedItem()")
+      
+    }
+  },
+  methods: {
+    setSelectedItem(payload) {
+      console.log("OrgNormal > methods: setSelectedItem() payload=" + JSON.stringify(payload))
+      this.selectedItem = payload;
+    }
+  },
+  created() {
+    this.orgs = [
         {
           "name": "검색그룹",
           "id": "SEARCH",
@@ -146,8 +136,9 @@ export default {
           "id": "COMMON",
           "type": "group"
         }
-      ],
-      members: [
+      ];
+    
+    this.members = [
         { "org_id": "SEARCH", "name": "검색 그룹장"},
         
         { "org_id": "NLP", "name": "NLP 그룹장"},
@@ -172,32 +163,8 @@ export default {
         { "org_id": "AI", "name": "AI 그룹장"},
         
         { "org_id": "COMMON", "name": "공용 그룹장"},
-      ]
-    }
+      ];
   },
-  computed: {
-    selectedMember() {
-      let list = []
 
-      for(let item of this.members) {
-        if( item.org_id.startsWith(this.selectedItem?.id) ) {
-          list.push(item)
-        }
-      }
-
-      return list
-    }
-  },
-  created() {
-  },
-  methods: {
-  }
 }
 </script>
-
-<style scoped>
-* {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 14px;
-}
-</style>
