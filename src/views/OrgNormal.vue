@@ -3,7 +3,7 @@
      <h1>조직도</h1>
       <hr>
       <div style="display: flex">
-        <org-normal-tree :orgs="orgs" @custom-event="setSelectedItem" />
+        <org-normal-tree :orgs="orgs" :initSelectedItem="selectedItem" @custom-event="setSelectedItem" />
 
         <org-normal-table :selectedItem="selectedItem" :selectedMembers="selectedMembers" />
       </div>

@@ -4,7 +4,10 @@ const OrgStoreTable = {
     members: []
   },
   getters: {
-    getMembers: state => state.members,
+    getMembers: (state, getters, rootState, rootGetters) => {
+      let selectedItem = rootGetters["OrgStoreTree/getSelectedItem"]
+      return state.members.filter( m => m.org_id.startsWith(selectedItem?.id) ) 
+    }
   },
   mutations: {
     mutMembers: (state, payload) => {

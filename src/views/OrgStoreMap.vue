@@ -3,19 +3,19 @@
      <h1>조직도</h1>
       <hr>
       <div style="display: flex">
-        <org-store-normal-tree />
+        <org-store-map-tree />
 
-        <org-store-normal-table />
+        <org-store-map-table />
       </div>
    </div>
 </template>
 
 <script>
-import OrgStoreNormalTable from './OrgStoreNormalTable.vue'
-import OrgStoreNormalTree from './OrgStoreNormalTree.vue'
+import OrgStoreMapTable from './OrgStoreMapTable.vue'
+import OrgStoreMapTree from './OrgStoreMapTree.vue'
 
 export default {
-  components: { OrgStoreNormalTree, OrgStoreNormalTable },  
+  components: { OrgStoreMapTree, OrgStoreMapTable },  
   data() {
     return {      
       

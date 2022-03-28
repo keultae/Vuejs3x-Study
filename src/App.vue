@@ -31,7 +31,8 @@
     <router-link to="/parentComponent4">ParentComponent4</router-link>|
     <router-link to="/parentComponent5">ParentComponent5</router-link>|
     <router-link to="/storeAccess">StoreAccess</router-link>|
-    <router-link to="/orgStoreNormal">OrgStoreNormal</router-link>|
+    <router-link to="/orgStore">OrgStore</router-link>|
+    <router-link to="/orgStoreMap">OrgStoreMap</router-link>|
     <router-link to="/orgNormal">OrgNormal</router-link>
   </div>
   <router-view/>

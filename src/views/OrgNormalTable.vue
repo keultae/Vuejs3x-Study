@@ -4,23 +4,24 @@
         selectedItem id:{{ selectedItem?.id }}, type:{{ selectedItem?.type }}
         </div>
         <div style="margin: 0.4em">
-        <table border="1">
-            <thead>
-            <tr>
-                <th>no</th>
-                <th>org_id</th>
-                <th>name</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr :key="i" v-for="(member, i) in selectedMembers">
-                <td>{{i+1}}</td>
-                <td>{{member.org_id}}</td>
-                <td>{{member.name}}</td>
-            </tr>
-            </tbody>
-        </table>
+            <table border="1">
+                <thead>
+                <tr>
+                    <th>no</th>
+                    <th>org_id</th>
+                    <th>name</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr :key="i" v-for="(member, i) in selectedMembers">
+                    <td>{{i+1}}</td>
+                    <td>{{member.org_id}}</td>
+                    <td>{{member.name}}</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
+        <button type="button" @click="clickTest">Click</button>
     </div>
 </template>
 <script>
@@ -42,6 +43,12 @@
         },    
         mounted() {},    //template에 정의된 html 코드가 랜더링된 후 실행
         unmounted() {},  //unmount가 완료된 후 실행
-        methods: {}      // 컴포넌트 내에서 사용할 메소드 정의
+        methods: {
+            clickTest() {       
+                // props에 설정한 데이터 변경시 아래 에러 발생 
+                //   49:17  error  Unexpected mutation of "selectedItem" prop  vue/no-mutating-props     
+                // this.selectedItem = { id: "AI"}
+            }
+        }      // 컴포넌트 내에서 사용할 메소드 정의
     }
 </script>

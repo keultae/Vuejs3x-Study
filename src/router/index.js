@@ -30,7 +30,8 @@ import ParentComponent4 from '../views/ParentComponent4'
 import ParentComponent5 from '../views/ParentComponent5'
 import StoreAccess from '../views/StoreAccess'
 import OrgNormal from '../views/OrgNormal'
-import OrgStoreNormal from '../views/OrgStoreNormal'
+import OrgStore from '../views/OrgStore'
+import OrgStoreMap from '../views/OrgStoreMap'
 
 
 const routes = [
@@ -193,9 +194,14 @@ const routes = [
     component: StoreAccess
   },
   {
-    path: '/orgStoreNormal',
-    name: 'OrgStoreNormal',
-    component: OrgStoreNormal
+    path: '/orgStore',
+    name: 'OrgStore',
+    component: OrgStore
+  },
+  {
+    path: '/orgStoreMap',
+    name: 'OrgStoreMap',
+    component: OrgStoreMap
   },
   {
     path: '/orgNormal',
