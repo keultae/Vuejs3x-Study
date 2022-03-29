@@ -1,6 +1,6 @@
 <template>
    <div style="display: block">
-     <h1>조직도</h1>
+     <h1>&boxvr;&boxh;&vdash;&hyphen;&ndash;조직도&Cross;&times;</h1>
       <hr>
       <div style="display: flex">
         <org-store-map-tree />

@@ -33,7 +33,8 @@
     <router-link to="/storeAccess">StoreAccess</router-link>|
     <router-link to="/orgStore">OrgStore</router-link>|
     <router-link to="/orgStoreMap">OrgStoreMap</router-link>|
-    <router-link to="/orgNormal">OrgNormal</router-link>
+    <router-link to="/orgNormal">OrgNormal</router-link>|
+    <router-link to="/html5Css">Html5Css</router-link>
   </div>
   <router-view/>
 </template>

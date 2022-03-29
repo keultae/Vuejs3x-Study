@@ -32,7 +32,7 @@ import StoreAccess from '../views/StoreAccess'
 import OrgNormal from '../views/OrgNormal'
 import OrgStore from '../views/OrgStore'
 import OrgStoreMap from '../views/OrgStoreMap'
-
+import Html5Css from '../views/Html5Css'
 
 const routes = [
   {
@@ -207,8 +207,12 @@ const routes = [
     path: '/orgNormal',
     name: 'OrgNormal',
     component: OrgNormal
+  },
+  {
+    path: '/html5Css',
+    name: 'Html5Css',
+    component: Html5Css
   }
-
 ]
 
 const router = createRouter({
