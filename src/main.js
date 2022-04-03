@@ -2,8 +2,11 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router' // router 폴더의 index.js가 import
 import mixins from './mixins'
-// import store from './store/store'
 import store from '@/store/index.js'
+
+import BootstrapVue3 from "bootstrap-vue-3";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
 
 // createApp(App): 최상위 컴포넌트인 App.vue로 app을 생성
 // use(router): App.vue에서 router라 사용될 수 있도록 추가
@@ -13,4 +16,8 @@ const app = createApp(App)
 app.use(router)
 app.mixin(mixins)
 app.use(store)
+app.use(BootstrapVue3)
 app.mount("#app")
+
+import "bootstrap/dist/js/bootstrap.js";
+import "bootstrap-vue-3/dist/bootstrap-vue-3.es.js";

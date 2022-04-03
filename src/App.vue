@@ -30,11 +30,14 @@
     <router-link to="/parentComponent3">ParentComponent3</router-link>|
     <router-link to="/parentComponent4">ParentComponent4</router-link>|
     <router-link to="/parentComponent5">ParentComponent5</router-link>|
+    <router-link to="/parentComponent6">ParentComponent6</router-link>|
     <router-link to="/storeAccess">StoreAccess</router-link>|
     <router-link to="/orgStore">OrgStore</router-link>|
     <router-link to="/orgStoreMap">OrgStoreMap</router-link>|
     <router-link to="/orgNormal">OrgNormal</router-link>|
-    <router-link to="/html5Css">Html5Css</router-link>
+    <router-link to="/html5Css">Html5Css</router-link>|
+    <router-link to="/drapAndDrop">DrapAndDrop</router-link>|
+    <router-link to="/useKeultaeTree">UseKeultaeTree</router-link>
   </div>
   <router-view/>
 </template>

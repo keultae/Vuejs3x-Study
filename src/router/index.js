@@ -28,11 +28,14 @@ import ParentComponent2 from '../views/ParentComponent2'
 import ParentComponent3 from '../views/ParentComponent3'
 import ParentComponent4 from '../views/ParentComponent4'
 import ParentComponent5 from '../views/ParentComponent5'
+import ParentComponent6 from '../views/ParentComponent6'
 import StoreAccess from '../views/StoreAccess'
 import OrgNormal from '../views/OrgNormal'
 import OrgStore from '../views/OrgStore'
 import OrgStoreMap from '../views/OrgStoreMap'
 import Html5Css from '../views/Html5Css'
+import DrapAndDrop from '../views/DrapAndDrop'
+import UseKeultaeTree from '../views/UseKeultaeTree'
 
 const routes = [
   {
@@ -189,6 +192,11 @@ const routes = [
     component: ParentComponent5
   },
   {
+    path: '/parentComponent6',
+    name: 'ParentComponent6',
+    component: ParentComponent6
+  },
+  {
     path: '/storeAccess',
     name: 'StoreAccess',
     component: StoreAccess
@@ -212,7 +220,18 @@ const routes = [
     path: '/html5Css',
     name: 'Html5Css',
     component: Html5Css
+  },
+  {
+    path: '/drapAndDrop',
+    name: 'DrapAndDrop',
+    component: DrapAndDrop
+  },
+  {
+    path: '/useKeultaeTree',
+    name: 'UseKeultaeTree',
+    component: UseKeultaeTree
   }
+  
 ]
 
 const router = createRouter({
