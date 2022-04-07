@@ -24,6 +24,13 @@
         </div>
 
         <div id="fix"></div>
+
+        <div id="container">
+            <div id="box1"><h2>1</h2></div>
+            <div id="box2"><h2>2</h2></div>
+            <div id="box3"><h2>3</h2></div>
+            <!-- <span>span</span> -->
+        </div>
     </div>
 </template>
 <script>
@@ -45,6 +52,32 @@
     }
 </script>
 <style scoped>
+#container {
+    display: flex;
+    /* flex-direction: column; */
+    width: 600px;
+    background: gray;
+    /* flex-wrap: wrap; */
+}
+#container div {
+    display: flex;
+    width: 200px;
+    border: 1px solid black;
+    background: #ccc;
+}
+#container span {
+    background: yellow;
+}
+#box1 {
+    flex: 1 1 0;
+}
+#box2 {
+    flex: 2 2 0;
+}
+#box3 {
+    flex: 1 1 0;
+}
+
 ul > li {
     float: left;
     border: solid black 1px;
