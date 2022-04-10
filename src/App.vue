@@ -37,7 +37,8 @@
     <router-link to="/orgNormal">OrgNormal</router-link>|
     <router-link to="/html5Css">Html5Css</router-link>|
     <router-link to="/drapAndDrop">DrapAndDrop</router-link>|
-    <router-link to="/useKeultaeTree">UseKeultaeTree</router-link>
+    <router-link to="/useKeultaeTree">UseKeultaeTree</router-link>|
+    <router-link to="/flex">Flex</router-link>|
   </div>
   <router-view/>
 </template>

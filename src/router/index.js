@@ -36,6 +36,7 @@ import OrgStoreMap from '../views/OrgStoreMap'
 import Html5Css from '../views/Html5Css'
 import DrapAndDrop from '../views/DrapAndDrop'
 import UseKeultaeTree from '../views/UseKeultaeTree'
+import Flex from '../views/Flex'
 
 const routes = [
   {
@@ -230,6 +231,11 @@ const routes = [
     path: '/useKeultaeTree',
     name: 'UseKeultaeTree',
     component: UseKeultaeTree
+  },
+  {
+    path: '/flex',
+    name: 'Flex',
+    component: Flex
   }
   
 ]
