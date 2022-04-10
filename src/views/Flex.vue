@@ -26,16 +26,26 @@
       </div>
     </div>
 
-    <div class="box2" :key="i" v-for="(item, i) in [1, 2, 3, 4, 5]">
-      <div class="one2">One</div>
-      <div class="two2"><input text="text" value="Input 1"/></div>
-      <div class="two22"><input text="text" value="Input 2"/></div>
-      <div class="three2"><button>OK</button></div>
-      <div class="four2">Three</div>
+    <div class="box2p">
+        <div class="box2" :key="i" v-for="(item, i) in [1, 2, 3, 4, 5]">
+          <div class="one2">One</div>
+          <div class="two2"><input text="text" value="Input 1"/></div>
+          <div class="two22"><input text="text" value="Input 2"/></div>
+          <div class="three2"><button>OK</button></div>
+          <div class="four2">Three</div>
+        </div>
+        <div class="verical"></div>
     </div>
 
+    <div class="logobox">
+      <img class="logo" src="@/assets/logo.png">
+      <div class="horizontel"></div>
+      <div class="verical"></div>
+    </div>
   </div>
 </template>
+
+
 <script>
     export default {
         name: '',      //컴포넌트 이름
@@ -50,15 +60,61 @@
         },    //컴포넌트가 생성되면 실행
         mounted() {},    //template에 정의된 html 코드가 랜더링된 후 실행
         unmounted() {},  //unmount가 완료된 후 실행
-        methods: {}      // 컴포넌트 내에서 사용할 메소드 정의
+        methods: {}
     }
 </script>
 
 <style scoped>
 .main {
-  padding: 10px;
+  padding: 10px 50px;
 }
 
+.logobox {
+  perspective: 300px;
+  border: 1px solid black;
+  width: 500px;
+  height: 300px;
+  background: aliceblue;
+  position: relative;
+  border-radius: 15px;
+}
+.logo:hover {
+  transform: rotateX(50deg);
+}
+.logobox .horizontel {
+  position: absolute;
+  top: 150px;
+  width: 100%;
+  height: 5px;
+  border-top: 1px solid blue;
+}
+.logobox .verical {
+  position: absolute;
+  top: 0px;
+  left: 248px;
+  border-left: 1px solid red;
+  display: inline-block;
+  width: 305px;
+  height: 300px;
+}
+
+.box2p {
+  position: relative;
+}
+.box2p .verical {
+  position: absolute;
+  top: 0px;
+  left: 17px;
+  border-left: 3px solid red;
+  background: cyan;
+  width: 6px;
+  height: 100%;
+}
+
+
+.box2 .two22:hover {
+  transform: scale(1.4);
+}
 .box2 {
   display: flex;
   width: 600px;

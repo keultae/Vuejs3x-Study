@@ -68,6 +68,10 @@
 </script>
 
 <style scoped>
+.line:hover {
+    border: 2px dotted red;
+    border-radius: 3px;
+}
 .line {
     height: 26px;
     margin-top: 2px;
@@ -76,6 +80,7 @@
 }
 .line-selected {
   background: orange;
+  border-radius: 3px;
 }
 
 .micro-box {
