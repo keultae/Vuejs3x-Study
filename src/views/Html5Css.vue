@@ -12,7 +12,7 @@
 
         <div class="box">
             <div class="box1">박스1</div>
-            <div class="box2">박스2</div>
+            <div class="box2">박스2 width:{{width}}, height:{{height}}</div>
         </div>
 
         <div id="wrap">
@@ -25,11 +25,10 @@
 
         <div id="fix"></div>
 
-        <div id="container">
-            <div id="box1"><h2>1</h2></div>
-            <div id="box2"><h2>2</h2></div>
-            <div id="box3"><h2>3</h2></div>
-            <!-- <span>span</span> -->
+        <div class="container" @click.stop="click1">
+            <div class="text1" @click.stop ref="text1"> {{text1}} </div>
+            <div class="text2" :style="{left:leftX, top:topY, width:width, height:height}" ><input type="text" vlaue="입력`123" @click.stop /></div>
+            <div class="text3" @click.stop="click3($event, 'text3')" ref="text3">TEXT3</div>
         </div>
     </div>
 </template>
@@ -40,43 +39,99 @@
         },
         data() {       //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
             return {
-                // sampleData: ''
+                text1: 'INIT',
+                leftX: '200px',
+                topY: '100px',
+                width: '50px',
+                height: '30px'
             };
         },
         setup() {},      //컴포지션 API
         created() {
         },    //컴포넌트가 생성되면 실행
-        mounted() {},    //template에 정의된 html 코드가 랜더링된 후 실행
+        mounted() {
+            window.addEventListener('resize', this.handleResize);
+
+            // this.$refs.text1를 출력하면 HTMLDivElement라고 찍힌다. 
+            // HTMLElement를 상속 받는데, HTMLElement 속성에 left, top, width, height 속성이 있어서 해당 값을 사용할 수 있다.
+            // https://developer.mozilla.org/ko/docs/Web/API/HTMLDivElement
+            // https://developer.mozilla.org/ko/docs/Web/API/HTMLElement
+            this.text1 = this.$refs['text1'].offsetTop + "px";
+
+            this.topY = this.$refs.text1.offsetTop + "px";
+        },    //template에 정의된 html 코드가 랜더링된 후 실행
         unmounted() {},  //unmount가 완료된 후 실행
-        methods: {}      // 컴포넌트 내에서 사용할 메소드 정의
+        methods: {
+            click1(event) {
+                this.text1 = "offsetX:" + event.offsetX + ", offsetY:" + event.offsetY + 
+                ", clientX:" + event.clientX + ", clientY:" + event.clientY +
+                ", pageX:" + event.pageX + ", pageY:" + event.pageY;
+
+                this.leftX = event.offsetX + "px";
+                this.topY = event.offsetY + "px";
+            },
+            handleResize() {
+                // 개발자 모드에서 브라우저 크기를 조절하면 브라우저 내부 우측 상단에 크기가 나오는데, 해당 값과 동일
+                this.width = window.innerWidth;
+                this.height = window.innerHeight;
+            },
+            click3(event, name) {
+                this.leftX = (this.$refs[name].offsetLeft - 1) + "px";
+                this.topY = (this.$refs[name].offsetTop - 1) + "px";
+                this.width = this.$refs[name].offsetWidth + "px";
+                this.height = this.$refs[name].offsetHeight + "px";
+            }
+        }      // 컴포넌트 내에서 사용할 메소드 정의
     }
+
+// offsetX : 객체 내의 마우스 X좌표
+// offsetY : 객체 내의 마우스 Y좌표
+// pageX : 웹 브라우저 기준 X좌표
+// pageY : 웹 브라우저 기준 Y좌표
+// screenX : 화면상 기준 X좌표
+// screenY : 화면상 기준 Y좌표
+
 </script>
 <style scoped>
-#container {
-    display: flex;
-    /* flex-direction: column; */
-    width: 600px;
-    background: gray;
-    /* flex-wrap: wrap; */
+.container {
+    background: aliceblue;
+    width: 500px;
+    height: 500px;
+    position: relative;
+    padding: 0px 0px;
 }
-#container div {
-    display: flex;
+
+.container .text1 {
+    position: absolute;
+    left: 10px;
+    top: 300px;
     width: 200px;
-    border: 1px solid black;
-    background: #ccc;
+    height: 100px;
+    border: 1px solid blue;
 }
-#container span {
-    background: yellow;
+
+.container .text2 {
+    position: absolute;
+    /* left: 100px;
+    top: 100px; */
+    /* width: 200px; */
+    /* height: 100px; */
+    border: 1px solid blue;
+    z-index: 10;
 }
-#box1 {
-    flex: 1 1 0;
+.container .text2 input {
+    width: 100%;
 }
-#box2 {
-    flex: 2 2 0;
+
+.container .text3 {
+    position: absolute;
+    left: 100px;
+    top: 10px;
+    border: 1px solid blue;
+    width: 100px;
 }
-#box3 {
-    flex: 1 1 0;
-}
+
+
 
 ul > li {
     float: left;
