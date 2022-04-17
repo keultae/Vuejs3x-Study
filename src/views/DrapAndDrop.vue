@@ -19,6 +19,7 @@
         :move="checkMove"
         @change="log"
         :animation="200"
+        group="people"
       >
         <template #item="{ element, index }">
           <li class="list-group-item">
@@ -50,6 +51,55 @@
           </li>
         </template>
       </draggable>
+      
+      <hr>
+
+      <draggable
+        tag="ul"
+        :list="list2"
+        class="list-group"
+        handle=".handle"
+        item-key="name"
+        @start="dragging = true"
+        @end="dragging = false"
+        ghost-class="ghost"
+        :move="checkMove"
+        @change="log"
+        :animation="200"
+        group="people"
+      >
+        <template #item="{ element, index }">
+          <li class="list-group-item">
+            <i class="fa fa-align-justify handle"></i>
+
+            <span
+              class="stext"
+              @click="clickId(index)"
+              v-bind:class="{ edit_false: element.edit }"
+              ref="stext"
+              >{{ element.name }}</span
+            >
+            <!-- 아래 input 태그에 v-model="element.name"을 지정하면 한 글자 입력시 span이 보이지 않지만 랜더링 되면서 포커스를 읽음 -->
+            <input
+              type="itext"
+              class="fname form-control"
+              v-model="element.name2"
+              v-bind:class="{ edit_false: element.edit == false }"
+              @keyup.enter="enter1(index)"
+              ref="fname"
+            />
+
+            <input
+              type="text"
+              class="ftext form-control"
+              v-model="element.text"
+            />
+            <i class="fa fa-times close" @click="removeAt(index)"></i>
+          </li>
+        </template>
+      </draggable>
+
+
       <div>checkMove: {{ moveMsg }}</div>
       <div>log: {{ logMsg }}</div>
     </div>
@@ -75,6 +125,11 @@ export default {
   data() {
     return {
       list: [
+        { name: "John", name2: "", text: "", id: 0, edit: false },
+        { name: "Joao", name2: "", text: "", id: 1, edit: false },
+        { name: "Jean", name2: "", text: "", id: 2, edit: false },
+      ],
+      list2: [
         { name: "John", name2: "", text: "", id: 0, edit: false },
         { name: "Joao", name2: "", text: "", id: 1, edit: false },
         { name: "Jean", name2: "", text: "", id: 2, edit: false },

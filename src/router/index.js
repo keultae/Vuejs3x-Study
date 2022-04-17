@@ -37,6 +37,9 @@ import Html5Css from '../views/Html5Css'
 import DrapAndDrop from '../views/DrapAndDrop'
 import UseKeultaeTree from '../views/UseKeultaeTree'
 import Flex from '../views/Flex'
+import DevNotion from '../views/DevNotion'
+import CompositionApi from '../views/CompositionApi'
+
 
 const routes = [
   {
@@ -236,6 +239,16 @@ const routes = [
     path: '/flex',
     name: 'Flex',
     component: Flex
+  },
+  {
+    path: '/devNotion',
+    name: 'DevNotion',
+    component: DevNotion
+  },
+  {
+    path: '/compositionApi',
+    name: 'CompositionApi',
+    component: CompositionApi
   }
   
 ]

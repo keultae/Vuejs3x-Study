@@ -39,6 +39,8 @@
     <router-link to="/drapAndDrop">DrapAndDrop</router-link>|
     <router-link to="/useKeultaeTree">UseKeultaeTree</router-link>|
     <router-link to="/flex">Flex</router-link>|
+    <router-link to="/devNotion">DevNotion</router-link>|
+    <router-link to="/compositionApi">CompositionApi</router-link>|
   </div>
   <router-view/>
 </template>
