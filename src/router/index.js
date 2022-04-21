@@ -39,6 +39,8 @@ import UseKeultaeTree from '../views/UseKeultaeTree'
 import Flex from '../views/Flex'
 import DevNotion from '../views/DevNotion'
 import CompositionApi from '../views/CompositionApi'
+import JsonDump from '../views/JsonDump'
+import JsonDump2 from '../views/JsonDump2'
 
 
 const routes = [
@@ -249,6 +251,16 @@ const routes = [
     path: '/compositionApi',
     name: 'CompositionApi',
     component: CompositionApi
+  },
+  {
+    path: '/jsonDump',
+    name: 'JsonDump',
+    component: JsonDump
+  },
+  {
+    path: '/jsonDump2',
+    name: 'JsonDump2',
+    component: JsonDump2
   }
   
 ]

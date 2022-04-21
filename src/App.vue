@@ -41,6 +41,8 @@
     <router-link to="/flex">Flex</router-link>|
     <router-link to="/devNotion">DevNotion</router-link>|
     <router-link to="/compositionApi">CompositionApi</router-link>|
+    <router-link to="/jsonDump">JsonDump</router-link>|
+    <router-link to="/jsonDump2">JsonDump2</router-link>|
   </div>
   <router-view/>
 </template>
