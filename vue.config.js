@@ -3,10 +3,6 @@ module.exports = {
     config.plugins.delete('prefetch'); //prefetch 삭제
   },
   devServer: {
-    proxy: {
-      '/oauth2.0': {
-        target: 'https://nid.naver.com'
-      }
-    }
+    proxy: 'http://localhost:7078'
   }
 }
