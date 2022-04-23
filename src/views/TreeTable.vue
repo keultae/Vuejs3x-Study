@@ -170,6 +170,12 @@ div.row > div:nth-child(1), div.row > div:nth-child(2) {
     border-right: 1px solid black;
 }
 
+div.js-menu {
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    padding: 5px 10px;
+    margin: 5px 0px;
+}
 div.js-menu > i {
     border: 1px solid gray;
     border-radius: 3px;
