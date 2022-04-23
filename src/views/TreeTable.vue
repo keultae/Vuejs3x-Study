@@ -5,10 +5,21 @@
     <span>화면에 트리를 그릴때는 object 테이블에서 읽은 데이터를 사용하고 한번 생성된 id는 바뀌지 않는다.</span>
     <hr>
     <div class="row">
-        <div class="col-6">
+        <div class="col-4">
             <rawDisplayer :value="children" title="children" />
         </div>
-        <div class="col-6">
+        <div class="col-4">
+            <h3> Json Dump </h3>
+            <div class="js-menu">Json Dump
+                <i class="far fa-caret-square-right">
+                    <i class="fas fa-minus"></i>
+                    <span>1</span>
+                    <i class="fas fa-plus"></i>
+                </i>
+            </div>
+            <json-dump-item :args="children" :level="1"/>
+        </div>
+        <div class="col-4">
             <h3> table </h3>
 
             <h4> table all </h4>
@@ -88,11 +99,13 @@
 </template>
 <script>
     import rawDisplayer from "@/components/raw-displayer.vue";
+    import JsonDumpItem from "./JsonDumpItem.vue";
 
     export default {
         name: 'TreeTable',      //컴포넌트 이름
         components: {  //다른 컴포넌트 사용 시 컴포넌트를 import하고, 배열로 저장
-            rawDisplayer
+            rawDisplayer,
+            JsonDumpItem
         },
         data() {       //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
             return {
@@ -153,7 +166,22 @@ div.row {
     text-align: left;
     margin: 0px 10px;
 }
-div.row > div:nth-child(1) {
+div.row > div:nth-child(1), div.row > div:nth-child(2) {
     border-right: 1px solid black;
+}
+
+div.js-menu > i {
+    border: 1px solid gray;
+    border-radius: 3px;
+    margin: 2px 5px;
+    padding: 2px 5px;
+}
+div.js-menu > i > i {
+    margin: 0px 3px;
+}
+div.js-menu > i > span {
+    display: inline-block;
+    width: 15px;
+    text-align: center;
 }
 </style>
