@@ -41,6 +41,7 @@ import DevNotion from '../views/DevNotion'
 import CompositionApi from '../views/CompositionApi'
 import JsonDump from '../views/JsonDump'
 import JsonDump2 from '../views/JsonDump2'
+import TreeTable from '../views/TreeTable'
 
 
 const routes = [
@@ -261,6 +262,11 @@ const routes = [
     path: '/jsonDump2',
     name: 'JsonDump2',
     component: JsonDump2
+  },
+  {
+    path: '/treeTable',
+    name: 'TreeTable',
+    component: TreeTable
   }
   
 ]

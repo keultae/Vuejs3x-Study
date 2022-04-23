@@ -48,12 +48,6 @@
               v-model="element.text"
             />
             <i class="fa fa-times close" @click="removeAt(index)"></i>
-          </li>
-        </template>
-      </draggable>
-      
-      <hr>
-
       <draggable
         tag="ul"
         :list="list2"
@@ -95,9 +89,17 @@
               v-model="element.text"
             />
             <i class="fa fa-times close" @click="removeAt(index)"></i>
+            <!-- <div class="pos"><div class="pos1"></div><div class="pos2"></div></div> -->
           </li>
         </template>
       </draggable>
+          </li>
+        </template>
+      </draggable>
+      
+      <hr>
+
+
 
 
       <div>checkMove: {{ moveMsg }}</div>
@@ -156,7 +158,7 @@ export default {
     },
     add: function () {
       id++;
-      this.list.push({ name: "Juan " + id, id, text: "" });
+      this.list.push({ name: "Juan " + id, name2: "", id: id, text: "", edit: false });
     },
     checkMove: function (e) {
       // 호출이 안됨
@@ -230,7 +232,7 @@ input.ftext {
 
 .fa-align-justify {
   /* visibility: hidden; 으로 하면 마우스 커서를 올렸을때, 인식이 안돼서 효과를 줄 수 없어서 컬러를 배경과 동일하게 설정 */
-  color: white;
+  /* color: white; */
 }
 
 .fa-align-justify:hover {
@@ -240,6 +242,7 @@ input.ftext {
 
 .list-group {
   min-height: 20px;
+  clear: both;
 }
 .list-group-item {
   cursor: move;
@@ -269,5 +272,28 @@ input.ftext {
 }
 .not-draggable {
   cursor: no-drop;
+}
+
+.pos {
+  clear: both;
+}
+.pos1 {
+    display: inline-block;
+    width: 200px;
+    height: 5px;
+    /* border: 1px solid gray; */
+}
+.pos1:hover {
+  background: yellow;
+  height: 20px;
+}
+.pos2 {
+    display: inline-block;
+    width: 200px;
+    height: 5px;
+    /* border: 1px solid gray; */
+}
+.pos2:hover {
+  background: cyan;
 }
 </style>
