@@ -10,7 +10,7 @@
         </div>
         <div class="col-4">
             <h3> Json Dump </h3>
-            <div class="js-menu">Json Dump
+            <div class="js-menu"><i class="fas fa-cog"></i>Json Dump
                 <i class="far fa-caret-square-right">
                     <i class="fas fa-minus"></i>
                     <span>1</span>

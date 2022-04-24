@@ -42,6 +42,7 @@ import CompositionApi from '../views/CompositionApi'
 import JsonDump from '../views/JsonDump'
 import JsonDump2 from '../views/JsonDump2'
 import TreeTable from '../views/TreeTable'
+import GroupList from '../views/GroupList'
 
 
 const routes = [
@@ -267,6 +268,11 @@ const routes = [
     path: '/treeTable',
     name: 'TreeTable',
     component: TreeTable
+  },
+  {
+    path: '/groupList',
+    name: 'GroupList',
+    component: GroupList
   }
   
 ]

@@ -44,6 +44,7 @@
     <router-link to="/jsonDump">JsonDump</router-link>|
     <router-link to="/jsonDump2">JsonDump2</router-link>|
     <router-link to="/treeTable">TreeTable</router-link>|
+    <router-link to="/groupList">GroupList</router-link>|
   </div>
   <router-view/>
 </template>
