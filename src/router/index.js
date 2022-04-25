@@ -39,8 +39,8 @@ import UseKeultaeTree from '../views/UseKeultaeTree'
 import Flex from '../views/Flex'
 import DevNotion from '../views/DevNotion'
 import CompositionApi from '../views/CompositionApi'
-import JsonDump from '../views/JsonDump'
-import JsonDump2 from '../views/JsonDump2'
+import JsonDumpExample from '../views/JsonDumpExample'
+import JsonDumpApiCall from '../views/JsonDumpApiCall'
 import TreeTable from '../views/TreeTable'
 import GroupList from '../views/GroupList'
 
@@ -255,14 +255,14 @@ const routes = [
     component: CompositionApi
   },
   {
-    path: '/jsonDump',
-    name: 'JsonDump',
-    component: JsonDump
+    path: '/jsonDumpExample',
+    name: 'JsonDumpExample',
+    component: JsonDumpExample
   },
   {
-    path: '/jsonDump2',
-    name: 'JsonDump2',
-    component: JsonDump2
+    path: '/jsonDumpApiCall',
+    name: 'JsonDumpApiCall',
+    component: JsonDumpApiCall
   },
   {
     path: '/treeTable',

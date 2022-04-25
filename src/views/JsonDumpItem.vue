@@ -1,48 +1,59 @@
 <template>
-
-    <div :class="{'level-1':level == 1, 'level-2':level == 2, 'level-3':level == 3, 'level-4':level == 4, }" v-for="(key, index) in Object.keys(args)" :key="index">
-        <template v-if="typeof(args[key]) == 'object' && Array.isArray(args[key])">
-            <!-- array -->
-            <i class="far" :class="{'fa-caret-square-right':!togles[level+'-'+index], 'fa-caret-square-down':togles[level+'-'+index] }" @click="clickTogle($event, level+'-'+index)">&nbsp;{{key}}</i>: Array[{{args[key].length}}]
-            <template v-if="togles[level+'-'+index] && args[key]">
-                <json-dump-item :args="args[key]" :level="level + 1"/>
-            </template>
-        </template>
-        <template v-else-if="typeof(args[key]) == 'object' && Array.isArray(args[key]) == false">
-            <!-- object -->
-            <i class="far" :class="{'fa-caret-square-right':!togles[level+'-'+index], 'fa-caret-square-down':togles[level+'-'+index] }" @click="clickTogle($event, level+'-'+index)">&nbsp;{{key}}</i>: Object
-            <template v-if="togles[level+'-'+index] && args[key]">
-                <json-dump-item :args="args[key]" :level="level + 1"/>
+    <div :style="['margin-left: ' +( level == 1? 0: 20 )+ 'px']" 
+        v-for="(key, index) in Object.keys(args)" :key="index">
+        <template v-if="args[key] !== null && typeof(args[key]) == 'object'">
+            <i class="far" :class="{'fa-caret-square-right':!togles[level+'-'+index], 'fa-caret-square-down':togles[level+'-'+index] }" 
+                @click="clickTogle($event, level+'-'+index)">&nbsp;{{key}}</i>: 
+                <!-- array -->
+                <template v-if="Array.isArray(args[key])">
+                Array[{{args[key].length}}]
+                </template>
+                <!-- object -->
+                <template v-else-if="!Array.isArray(args[key])">
+                Object
+                </template>
+            <template v-if="(togles[level+'-'+index] || submenu1.level > level) && args[key] ">
+                <json-dump-item :args="args[key]" :level="level + 1" :maxlevel="maxlevel" :submenu1="submenu1"/>
             </template>
         </template>
         <template v-else>
             <!-- other -->
             <div class="end">
-                <div class="name">{{key}}</div>: <div class="value">{{checkValue(args[key])}}</div>
+                <i class="fas fa-ellipsis-h"></i><div class="name">&nbsp;{{key}}</div>
+                <div class="ga" :style="['width:'+((maxlevel - level)*20)+'px']"></div>
+                <div class="value">{{checkValue(args[key])}}</div>
             </div>
         </template>
     </div>
-
 </template>
 <script>
-
     export default {
         name: 'JsonDumpItem',      //컴포넌트 이름
         components: {  //다른 컴포넌트 사용 시 컴포넌트를 import하고, 배열로 저장
         },
         props: {
             level: {type: Number, default: 1},
-            args: {type: Object}
+            maxlevel: {type: Number},
+            args: {type: Object},
+            submenu1: {type: Object},
         },
         data() {       //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
             return {  
                 togles: {},              
             };
         },
+        computed: {
+            togle() {
+                return this;
+            }
+        },
         methods: {
             checkValue(value) {
                 let ret = value;
-                if( typeof(value) == "string") {
+                // typeof(null) => object로 리턴돼서 null 먼저 검사
+                if( value == null) {
+                    ret = 'null';
+                } else if( typeof(value) == "string") {
                     value = value.replaceAll("\n", "\\n");
                     ret = '"' + value + '"';
                 }
@@ -61,31 +72,27 @@
     }
 </script>
 <style scoped>
-.level-1, .level-2, .level-3, .level-4, .level-5 {
-    margin-left: 20px;
-}
-/* .name {
-    display: inline-block;
-    width: 200px;
-}
-.value {
-    display: inline-block;
-    width: 500px;
-} */
 i.far {
     color: purple;
 }
-
 div.end {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid gray;
 }
 div.end > div.name {
     flex: 0 0 auto;
     width: 200px;
 }
+div.ga {
+    /* background: cyan; */
+    flex: 0 0 auto;
+}
 div.end > div.value {
     flex: 0 1 auto;
     width: 100%;
+    border-left: 1px solid gray;
+    padding-left: 5px;
 }
 </style>

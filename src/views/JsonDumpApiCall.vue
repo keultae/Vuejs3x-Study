@@ -30,21 +30,21 @@
         </div>
     </div> -->
     <div class="row">
-        <div class="col-6">
-            <json-dump-item :args="args" :level="1"/>
+        <div class="col-12">
+            <json-dump :args="args"/>
         </div>
     </div>
 
     
 </template>
 <script>
-    import JsonDumpItem from "./JsonDumpItem.vue"
+    import JsonDump from "./JsonDump.vue"
     import axios from "axios";
 
     export default {
-        name: 'JsonDump2',      //컴포넌트 이름
+        name: 'JsonDumpApiCall',      //컴포넌트 이름
         components: {  //다른 컴포넌트 사용 시 컴포넌트를 import하고, 배열로 저장
-            JsonDumpItem
+            JsonDump
         },
         data() {       //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
             return {
@@ -75,7 +75,7 @@
                 this.search.elapsed = '소요 시간';
                 let end = 0;
 
-                axios.get('/qa/' + callId)
+                axios.get('/qa2/' + callId)
                 .then(res => {
                     console.log("then() " + res);
                     this.args = res.data;
