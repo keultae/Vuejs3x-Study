@@ -45,6 +45,7 @@
     <router-link to="/jsonDumpApiCall">JsonDumpApiCall</router-link>|
     <router-link to="/treeTable">TreeTable</router-link>|
     <router-link to="/groupList">GroupList</router-link>|
+    <router-link to="/EasyCron">EasyCron</router-link>|
   </div>
   <router-view/>
 </template>

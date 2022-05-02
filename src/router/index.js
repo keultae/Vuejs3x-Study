@@ -43,6 +43,7 @@ import JsonDumpExample from '../views/JsonDumpExample'
 import JsonDumpApiCall from '../views/JsonDumpApiCall'
 import TreeTable from '../views/TreeTable'
 import GroupList from '../views/GroupList'
+import EasyCron from '../views/cron/EasyCron'
 
 
 const routes = [
@@ -273,6 +274,11 @@ const routes = [
     path: '/groupList',
     name: 'GroupList',
     component: GroupList
+  },
+  {
+    path: '/easyCron',
+    name: 'EasyCron',
+    component: EasyCron
   }
   
 ]
