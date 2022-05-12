@@ -44,7 +44,7 @@ import JsonDumpApiCall from '../views/JsonDumpApiCall'
 import TreeTable from '../views/TreeTable'
 import GroupList from '../views/GroupList'
 import EasyCron from '../views/cron/EasyCron'
-
+import DragAndDropExam from '../views/DragAndDropExam'
 
 const routes = [
   {
@@ -279,6 +279,11 @@ const routes = [
     path: '/easyCron',
     name: 'EasyCron',
     component: EasyCron
+  },
+  {
+    path: '/dragAndDropExam',
+    name: 'DragAndDropExam',
+    component: DragAndDropExam
   }
   
 ]

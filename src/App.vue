@@ -46,6 +46,7 @@
     <router-link to="/treeTable">TreeTable</router-link>|
     <router-link to="/groupList">GroupList</router-link>|
     <router-link to="/EasyCron">EasyCron</router-link>|
+    <router-link to="/dragAndDropExam">DragAndDropExam</router-link>|
   </div>
   <router-view/>
 </template>
