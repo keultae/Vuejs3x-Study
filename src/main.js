@@ -33,6 +33,8 @@ VMdPreview.use(githubTheme, {
   Hljs: hljs,
 });
 
+import CKEditor from '@ckeditor/ckeditor5-vue';
+
 // createApp(App): 최상위 컴포넌트인 App.vue로 app을 생성
 // use(router): App.vue에서 router라 사용될 수 있도록 추가
 // mount('#app'): public 폴더의 index.html에 정의 되어 있는 id="app"인 html element에 마운트
@@ -44,6 +46,7 @@ app.use(store)
 app.use(BootstrapVue3)
 app.use(VMdEditor);
 app.use(VMdPreview);
+app.use(CKEditor);
 app.mount("#app")
 
 import "bootstrap/dist/js/bootstrap.js";

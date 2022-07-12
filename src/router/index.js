@@ -45,6 +45,7 @@ import TreeTable from '../views/TreeTable'
 import GroupList from '../views/GroupList'
 import EasyCron from '../views/cron/EasyCron'
 import DragAndDropExam from '../views/DragAndDropExam'
+import CKEditor from '../views/CKEditor'
 
 const routes = [
   {
@@ -284,6 +285,11 @@ const routes = [
     path: '/dragAndDropExam',
     name: 'DragAndDropExam',
     component: DragAndDropExam
+  },
+  {
+    path: '/CKEditor',
+    name: 'CKEditor',
+    component: CKEditor
   }
   
 ]

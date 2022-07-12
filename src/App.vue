@@ -47,6 +47,7 @@
     <router-link to="/groupList">GroupList</router-link>|
     <router-link to="/EasyCron">EasyCron</router-link>|
     <router-link to="/dragAndDropExam">DragAndDropExam</router-link>|
+    <router-link to="/CKEditor">CKEditor</router-link>|
   </div>
   <router-view/>
 </template>
