@@ -37,7 +37,8 @@
     <router-link to="/orgNormal">OrgNormal</router-link>|
     <router-link to="/html5Css">Html5Css</router-link>|
     <router-link to="/drapAndDrop">DrapAndDrop</router-link>|
-    <router-link to="/useKeultaeTree">UseKeultaeTree</router-link>|
+    <router-link to="/KeultaeTreeTest">KeultaeTreeTest</router-link>|
+    <router-link to="/TreeMenuTest">TreeMenuTest</router-link>|
     <router-link to="/flex">Flex</router-link>|
     <router-link to="/devNotion">DevNotion</router-link>|
     <router-link to="/compositionApi">CompositionApi</router-link>|

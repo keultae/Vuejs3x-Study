@@ -49,7 +49,11 @@ function crc32(
     // 연속으로 호출했을때도 유니크한 값을 리턴하기 위해서
     // 10 밀리세컨드 대기
     const wakeUpTime = Date.now() + 10;
-    while (Date.now() < wakeUpTime) {}
+    var count = 0;
+    while (Date.now() < wakeUpTime) {
+      count += 1;
+    }
+    console.log(count);
   
     return crc32(String(Date.now())).toUpperCase();
   }

@@ -35,7 +35,8 @@ import OrgStore from '../views/OrgStore'
 import OrgStoreMap from '../views/OrgStoreMap'
 import Html5Css from '../views/Html5Css'
 import DrapAndDrop from '../views/DrapAndDrop'
-import UseKeultaeTree from '../views/UseKeultaeTree'
+import KeultaeTreeTest from '../views/KeultaeTree/KeultaeTreeTest'
+import TreeMenuTest from '../views/TreeMenu/TreeMenuTest'
 import Flex from '../views/Flex'
 import DevNotion from '../views/DevNotion'
 import CompositionApi from '../views/CompositionApi'
@@ -237,9 +238,14 @@ const routes = [
     component: DrapAndDrop
   },
   {
-    path: '/useKeultaeTree',
-    name: 'UseKeultaeTree',
-    component: UseKeultaeTree
+    path: '/KeultaeTreeTest',
+    name: 'KeultaeTreeTest',
+    component: KeultaeTreeTest
+  },
+  {
+    path: '/TreeMenuTest',
+    name: 'TreeMenuTest',
+    component: TreeMenuTest
   },
   {
     path: '/flex',

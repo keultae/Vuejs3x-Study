@@ -11,7 +11,7 @@
                 class="keultae-tree"
                 />
         </div>
-        <rawDisplayer class="col-6" :value="tree_list" title="tree_list" />
+        <rawDisplayer class="col-6" :value="this.tree_list" title="tree_list" />
     </div>
 </template>
 
@@ -20,7 +20,7 @@
     import rawDisplayer from "@/components/raw-displayer.vue";
 
     export default {
-        name: 'UseKeultaeTree',      //컴포넌트 이름
+        name: 'KeultaeTreeTest',      //컴포넌트 이름
         components: {  //다른 컴포넌트 사용 시 컴포넌트를 import하고, 배열로 저장
             KeultaeTree, rawDisplayer
         },
